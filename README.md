@@ -10,3 +10,6 @@ HOW TO SETUP GITIGNORE
 5. type git config --global core.excludesfile ~/.gitignore_global
 6. NOW GO TO .gitignore_global and add the text (*.mr *.pvl *.syn) with the whitespaces as new lines.
 7. DONE
+
+
+# DONT GIT PUSH FILES THAT END IN ANYHING OTHER THAN .SV OR .dc PLEASE

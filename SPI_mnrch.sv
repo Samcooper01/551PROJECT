@@ -6,7 +6,7 @@ module SPI_mnrch(
 	output logic SS_n, 
 	output logic SCLK, 
 	output logic MOSI, 
-	input logic [15:0]wt_data, 
+	input logic [15:0]wrt_data, 
 	output logic done,
 	output logic [15:0]rd_data
 ); 
@@ -59,7 +59,7 @@ always_ff @(posedge clk)
 
 always_ff @(posedge clk) 
 	if (init) 
-		shft_reg[15:0] = wt_data[15:0];
+		shft_reg[15:0] = wrt_data[15:0];
 	else if (shft) 
 		shft_reg = {shft_reg[14:0], MISO_smpl}; 
 		

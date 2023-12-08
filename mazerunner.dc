@@ -1,0 +1,52 @@
+#####################
+# Read in all files #
+#####################
+read_file -format sverilog {MazeRunner.sv reset_synch.sv inert_intf.sv inertial_integrator.sv SPI_iNEMO4.sv \
+                            maze_solve.sv navigate.sv cmd_proc.sv IR_Math.sv UART_wrapper.sv UART.sv \
+                            UART_tx.sv UART_rx.sv PID.sv MtrDrv.sv piezo_drv.sv DutyScaleROM.sv SPI_mnrch.sv \
+                            PWM12.sv sensor_intf.sv A2D_intf.sv PWM8.sv }
+
+##################################
+# set top level and link modules #
+##################################
+set current_design MazeRunner
+link 
+
+###########################################
+# create clk and tell syn to not touch it #
+###########################################
+create_clock -name "clk" -period 2.5 -waveform {0 1.25} {clk}
+set_dont_touch_network [find port clk]
+
+############################################
+# define inputs except clk for input delay #
+############################################
+set prim_inputs [remove_from_collection [all_inputs] [find port clk] ]
+
+########################################
+# set input delay and drive all inputs #
+########################################
+set_input_delay -clock clk 0.6 [copy_collection $prim_inputs]
+set_driving_cell -lib_cell NAND2X2_LVT -library saed32lvt_tt0p85v25c \
+                    [copy_collection $prim_inputs]
+
+################################
+# define delays on all outputs #
+################################
+set_output_delay -clock clk 0.5 [all_outputs]
+set_load 0.1 [all_outputs]
+
+############################
+# set max transition times #
+############################
+set_max_transition 0.125 [current_design]
+
+#######################
+# set wire load model #
+#######################
+set_wire_load_model -name 16000 -library saed32lvt_tt0p85v25c
+
+#################
+# first compile #
+#################
+compile -map_effort medium

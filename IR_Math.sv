@@ -1,8 +1,8 @@
-module IR_math(clk, rst_n, lft_opn, rght_opn, lft_IR, rght_IR, IR_Dtrm, en_fusion, dsrd_hdng, dsrd_hdng_adj); 
+module IR_math(lft_opn, rght_opn, lft_IR, rght_IR, IR_Dtrm, en_fusion, dsrd_hdng, dsrd_hdng_adj); 
 
 	parameter NOM_IR = 12'h970; //nominal IR reading if bot is centered
 
-	input clk, rst_n; 
+	//input clk, rst_n; 
 	input lft_opn, rght_opn; 
 	input [11:0] lft_IR, rght_IR; 
 	input signed [8:0]IR_Dtrm;
@@ -52,11 +52,11 @@ module IR_math(clk, rst_n, lft_opn, rght_opn, lft_IR, rght_IR, IR_Dtrm, en_fusio
 
 	//output to feed into pipelined flop
 	assign dsrd_hdng_piped_in = (en_fusion ? sum2[11:0] : dsrd_hdng[11:0]); 
-
-	always_ff @(posedge clk, negedge rst_n)
+	assign dsrd_hdng_adj = dsrd_hdng_piped_in;
+	/*always_ff @(posedge clk, negedge rst_n)
 		if (!rst_n) 
 			dsrd_hdng_adj <= 1'b0;
 		else 
-			dsrd_hdng_adj <= dsrd_hdng_piped_in; 
+			dsrd_hdng_adj <= dsrd_hdng_piped_in; */
 endmodule
 	

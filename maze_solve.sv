@@ -1,4 +1,4 @@
-module maze_sovle(
+module maze_solve(
     input clk, 
     input rst_n, 
     input cmd_md, 

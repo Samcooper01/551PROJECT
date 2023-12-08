@@ -50,3 +50,16 @@ set_wire_load_model -name 16000 -library saed32lvt_tt0p85v25c
 # first compile #
 #################
 compile -map_effort medium
+
+#######################
+# smash the hierarchy #
+####################### 
+ungroup -all -flatten
+
+###############
+# 2nd compile #
+###############
+compile -map_effort medium
+
+report_timing -delay min 
+report_timing -delay max 

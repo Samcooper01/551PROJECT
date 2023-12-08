@@ -1,0 +1,1289 @@
+Detecting input file type automatically (-rtl or -netlist).
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/MazeRunner.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/reset_synch.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv:169: delay controls are ignored for synthesis. (VER-176)
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/navigate.sv
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/navigate.sv:59: the undeclared symbol 'curr_opn_left' assumed to have the default net type, which is 'wire'. (VER-936)
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/cmd_proc.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_wrapper.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_tx.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/MtrDrv.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/DutyScaleROM.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PWM12.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv:123: The value 0000 is too large for the numeric data type being used (VER-1)
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/A2D_intf.sv
+Compiling source file /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PWM8.sv
+
+Inferred memory devices in process
+	in routine reset_synch line 11 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/reset_synch.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      rst_n_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     rst_ff1_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.sv:93: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 104 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           113            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine inert_intf line 57 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     INT_ff1_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     INT_ff2_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inert_intf line 69 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      timer_reg      | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inert_intf line 77 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      yaw_l_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inert_intf line 85 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      yaw_h_reg      | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inert_intf line 96 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv:112: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv:168: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv:188: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv:191: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv:205: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv:207: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv:214: signed to unsigned part selection occurs. (VER-318)
+
+Statistics for case statements in always block at line 65 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            76            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine inertial_integrator line 56 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inertial_integrator line 111 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    yaw_comp_reg     | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inertial_integrator line 127 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   yaw_scaled_reg    | Flip-flop |  19   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inertial_integrator line 137 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    smpl_cntr_reg    | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inertial_integrator line 153 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       rdy_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     vld_ff1_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     vld_ff2_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inertial_integrator line 176 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     yaw_int_reg     | Flip-flop |  27   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine inertial_integrator line 195 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     yaw_off_reg     | Flip-flop |  19   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv:160: The statements in initial blocks are ignored. (VER-281)
+
+Statistics for case statements in always block at line 116 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           128            |     no/auto      |
+|           173            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 46 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  update_period_reg  | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 54 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   shft_reg_tx_reg   | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 65 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   shft_reg_rx_reg   | Flip-flop |  15   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 71 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     bit_cnt_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 77 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    write_reg_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 89 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    registers_reg    | Flip-flop | 1024  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 97 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       INT_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 107 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_iNEMO4 line 116 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|     clr_INT_reg     | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+Warning:  Latch inferred in design SPI_iNEMO4 read with 'hdlin_check_no_latch' (ELAB-395)
+
+Inferred tri-state devices in process
+	in routine SPI_iNEMO4 line 158 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv'.
+============================================
+| Register Name |       Type       | Width |
+============================================
+|   MISO_tri    | Tri-State Buffer |   1   |
+============================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|  SPI_iNEMO4/187  |  128   |    8    |      7       |
+======================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.sv:116: Netlist for always_comb block contains a latch. (ELAB-974)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv:89: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv:83: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv:99: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv:97: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv:119: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv:111: signed to unsigned conversion occurs. (VER-318)
+
+Statistics for case statements in always block at line 56 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            61            |    auto/auto     |
+|            83            |     no/auto      |
+|            97            |     no/auto      |
+|           111            |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine maze_solve line 20 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    dsrd_hdng_reg    | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine maze_solve line 29 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    stp_rght_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+|     stp_lft_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine maze_solve line 50 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine maze_solve line 56 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|    nxt_hdng_reg     | Latch |  12   |  Y  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+Warning:  Latch inferred in design maze_solve read with 'hdlin_check_no_latch' (ELAB-395)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.sv:56: Netlist for always_comb block contains a latch. (ELAB-974)
+
+Inferred memory devices in process
+	in routine navigate line 40 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/navigate.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    frwrd_spd_reg    | Flip-flop |  11   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine navigate line 55 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/navigate.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   nxt_opn_lft_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  curr_opn_lft_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine navigate line 62 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/navigate.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  nxt_opn_rght_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  curr_opn_rght_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine navigate line 78 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/navigate.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Statistics for case statements in always block at line 51 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/cmd_proc.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            64            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine cmd_proc line 35 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/cmd_proc.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine cmd_proc line 51 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/cmd_proc.sv'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|    dsrd_hdng_reg    | Latch |  12   |  Y  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+Warning:  Latch inferred in design cmd_proc read with 'hdlin_check_no_latch' (ELAB-395)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/cmd_proc.sv:51: Netlist for always_comb block contains a latch. (ELAB-974)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:29: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:30: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:31: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:33: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:37: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:40: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:43: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:45: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:47: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:49: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_Math.sv:54: signed to unsigned part selection occurs. (VER-318)
+
+Statistics for case statements in always block at line 50 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_wrapper.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            57            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine UART_wrapper line 27 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_wrapper.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_wrapper line 34 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_wrapper.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       cmd_reg       | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_wrapper line 41 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_wrapper.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     cmd_rdy_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Statistics for case statements in always block at line 76 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_tx.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            84            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine UART_tx line 24 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_tx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_tx line 32 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_tx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   tx_shft_reg_reg   | Flip-flop |   9   |  Y  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_tx line 47 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_tx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    baud_cnt_reg     | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_tx line 58 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_tx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     bit_cnt_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_tx line 66 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_tx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     tx_done_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Statistics for case statements in always block at line 92 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           100            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine UART_rx line 27 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_rx line 35 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      RX_sf_reg      | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+|      RX_df_reg      | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_rx line 46 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   rx_shft_reg_reg   | Flip-flop |   9   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_rx line 54 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     bit_cnt_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_rx line 64 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    baud_cnt_reg     | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine UART_rx line 80 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       rdy_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:32: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:36: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:38: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:73: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:75: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:102: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:109: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:120: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:122: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:123: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:128: signed to unsigned conversion occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv:129: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine PID line 66 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   integrator_reg    | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PID line 89 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      flop1_reg      | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+|      flop0_reg      | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/MtrDrv.sv:28: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/MtrDrv.sv:31: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv:23: signed to unsigned assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv:25: signed to unsigned assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv:88: signed to unsigned assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv:34: Statement unreachable (Branch condition impossible to meet).  (VER-61)
+
+Statistics for case statements in always block at line 48 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            53            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine piezo_drv line 15 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     cnt_frq_reg     | Flip-flop |  15   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine piezo_drv line 27 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     cnt_dur_reg     | Flip-flop |  25   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine piezo_drv line 41 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   4   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/DutyScaleROM.sv:15: The statements in initial blocks are ignored. (VER-281)
+
+Inferred memory devices in process
+	in routine DutyScaleROM line 12 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/DutyScaleROM.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      entry_reg      | Flip-flop |  12   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+| DutyScaleROM/13  |   64   |    1    |      6       |
+======================================================
+
+Statistics for case statements in always block at line 100 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           108            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine SPI_mnrch line 31 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    sclk_div_reg     | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_mnrch line 44 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    bit_cntr_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_mnrch line 56 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    MISO_smpl_reg    | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_mnrch line 60 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    shft_reg_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_mnrch line 70 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      SS_n_reg       | Flip-flop |   1   |  N  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_mnrch line 79 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      done_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine SPI_mnrch line 94 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_mnrch.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PWM12 line 11 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PWM12.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       cnt_reg       | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PWM12 line 17 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PWM12.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      PWM2_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PWM12 line 25 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PWM12.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      PWM1_reg       | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv:158: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv:159: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv:164: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv:168: signed to unsigned part selection occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv:175: unsigned to signed assignment occurs. (VER-318)
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv:181: signed to unsigned part selection occurs. (VER-318)
+
+Statistics for case statements in always block at line 195 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           208            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 319 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           329            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 92 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       tmr_reg       | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 99 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     vbatt4_reg      | Flip-flop |   2   |  Y  | N  | N  | Y  | N  | N  | N  |
+|     vbatt4_reg      | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     vbatt1_reg      | Flip-flop |   2   |  Y  | N  | N  | Y  | N  | N  | N  |
+|     vbatt1_reg      | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     vbatt2_reg      | Flip-flop |   2   |  Y  | N  | N  | Y  | N  | N  | N  |
+|     vbatt2_reg      | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     vbatt3_reg      | Flip-flop |   2   |  Y  | N  | N  | Y  | N  | N  | N  |
+|     vbatt3_reg      | Flip-flop |  10   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 121 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     cntr_IR_reg     | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 128 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  rght_IR_prev3_reg  | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     rght_IR_reg     | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  rght_IR_prev1_reg  | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  rght_IR_prev2_reg  | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 142 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  lft_IR_prev3_reg   | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|     lft_IR_reg      | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  lft_IR_prev1_reg   | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|  lft_IR_prev2_reg   | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 180 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     IR_Dtrm_reg     | Flip-flop |   9   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 189 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 274 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    lft_accum_reg    | Flip-flop |  15   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 280 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   rght_accum_reg    | Flip-flop |  15   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 289 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    smpl_cnt_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 298 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  rght_off_reg_reg   | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   lft_off_reg_reg   | Flip-flop |  12   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine sensor_intf line 313 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    cal_state_reg    | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Statistics for case statements in always block at line 45 in file
+	'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/A2D_intf.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            50            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine A2D_intf line 30 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/A2D_intf.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Warning:  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/A2D_intf.sv:39: Netlist for always_ff block does not contain a flip-flop. (ELAB-976)
+
+Inferred memory devices in process
+	in routine PWM8 line 16 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PWM8.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       cnt_reg       | Flip-flop |   8   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PWM8 line 28 in file
+		'/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PWM8.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     PWM_sig_reg     | Flip-flop |   1   |  N  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/MazeRunner.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/reset_synch.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inert_intf.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/inertial_integrator.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/SPI_iNEMO4.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/maze_solve.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/navigate.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/cmd_proc.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/IR_math.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_wrapper.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_tx.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/UART_rx.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PID.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/MtrDrv.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/piezo_drv.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/DutyScaleROM.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/sensor_intf.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/A2D_intf.db'. (DDB-24)
+Warning: Overwriting design file '/filespace/s/sccooper/ECE551/FINAL/551PROJECT/PWM8.db'. (DDB-24)
+Loaded 22 designs.
+Current design is 'MazeRunner'.
+
+  Linking design 'MazeRunner'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  MazeRunner                  /filespace/s/sccooper/ECE551/FINAL/551PROJECT/MazeRunner.db
+  saed32lvt_tt0p85v25c (library) /cae/apps/data/saed32_edk-2022/lib/stdcell_lvt/db_nldm/saed32lvt_tt0p85v25c.db
+  saed32io_wb_tt1p05v25c_2p5v (library) /cae/apps/data/saed32_edk-2022/lib/io_std/db_nldm/saed32io_wb_tt1p05v25c_2p5v.db
+  * (46 designs)              /filespace/s/sccooper/ECE551/FINAL/551PROJECT/navigate_FAST_SIM1.db, etc
+
+Warning: Design rule attributes from the driving cell will be set on the port 'RST_n'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'INRT_MISO'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'INRT_INT'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'A2D_MISO'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'RX'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'hall_n'. (UID-401)
+Warning: Setting attribute 'fix_multiple_port_nets' on design 'MazeRunner'. (UIO-59)
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler                                                                   |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 2987                                   |
+| Number of User Hierarchies                              | 36                                     |
+| Sequential Cell Count                                   | 706                                    |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 2                                      |
+| Number of VT Class                                      | 2                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 458                                    |
+| Number of Dont Touch Nets                               | 22                                     |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+====================================================================================================
+
+Information: There are 189 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Warning: Operating condition tt0p85v25c set on design MazeRunner has different process,
+voltage and temperatures parameters than the parameters at which target library 
+saed32io_wb_tt1p05v25c_2p5v is characterized. Delays may be inaccurate as a result. (OPT-998)
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'piezo_drv_FAST_SIM1_DW01_inc_0_DW01_inc_4'
+  Processing 'piezo_drv_FAST_SIM1'
+  Processing 'sensor_intf_1_900_DW01_add_2_DW01_add_11'
+  Processing 'sensor_intf_1_900_DW01_add_3_DW01_add_12'
+  Processing 'sensor_intf_1_900_DW01_add_4_DW01_add_13'
+  Processing 'sensor_intf_1_900_DW01_inc_0_DW01_inc_5'
+  Processing 'sensor_intf_1_900_DW01_sub_4'
+  Processing 'sensor_intf_1_900_DW01_sub_3'
+  Processing 'sensor_intf_1_900_DW01_sub_2'
+  Processing 'sensor_intf_1_900_DW01_sub_1'
+  Processing 'sensor_intf_1_900_DW01_sub_0'
+  Processing 'sensor_intf_1_900_DW01_add_1_DW01_add_2'
+  Processing 'sensor_intf_1_900_DW01_add_0_DW01_add_1'
+  Processing 'PWM8'
+  Processing 'SPI_mnrch_0'
+  Processing 'A2D_intf'
+  Processing 'sensor_intf_1_900'
+  Processing 'PWM12_0'
+  Processing 'DutyScaleROM'
+Information: The register 'entry_reg[11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'entry_reg[0]' is a constant and will be removed. (OPT-1206)
+  Processing 'MtrDrv'
+  Processing 'PID'
+  Processing 'IR_math_900_DW01_add_2'
+  Processing 'IR_math_900_DW01_sub_3'
+  Processing 'IR_math_900'
+  Processing 'inertial_integrator'
+  Processing 'inert_intf'
+  Processing 'navigate'
+Information: The register 'nxt_opn_lft_reg' will be removed. (OPT-1207)
+Information: The register 'curr_opn_lft_reg' will be removed. (OPT-1207)
+  Processing 'maze_solve'
+  Processing 'cmd_proc'
+  Processing 'UART_rx'
+  Processing 'UART_tx'
+  Processing 'UART'
+  Processing 'UART_wrapper'
+  Processing 'reset_synch'
+  Processing 'MazeRunner'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'PWM8_DW01_cmp2_0'
+  Processing 'PWM8_DW01_inc_0_DW01_inc_3'
+  Processing 'SPI_mnrch_1_DW01_inc_0_DW01_inc_4'
+  Processing 'MtrDrv_DW01_sub_0'
+  Processing 'MtrDrv_DW01_add_0'
+  Processing 'MtrDrv_DW01_add_1'
+  Processing 'MtrDrv_DW01_add_2'
+  Processing 'PWM12_1_DW01_cmp2_0_DW01_cmp2_1'
+  Processing 'PWM12_1_DW01_cmp2_1_DW01_cmp2_2'
+  Processing 'PWM12_1_DW01_cmp2_2_DW01_cmp2_3'
+  Processing 'PWM12_1_DW01_add_0_DW01_add_3'
+  Processing 'PWM12_1_DW01_inc_0_DW01_inc_5'
+  Processing 'PWM12_0_DW01_cmp2_0_DW01_cmp2_4'
+  Processing 'PWM12_0_DW01_cmp2_1_DW01_cmp2_5'
+  Processing 'PWM12_0_DW01_cmp2_2_DW01_cmp2_6'
+  Processing 'PWM12_0_DW01_add_0_DW01_add_4'
+  Processing 'PWM12_0_DW01_inc_0_DW01_inc_6'
+  Processing 'PID_DW01_cmp2_0_DW01_cmp2_7'
+  Processing 'PID_DW01_cmp2_1_DW01_cmp2_8'
+  Processing 'PID_DW01_sub_0_DW01_sub_1'
+  Processing 'PID_DW01_add_0_DW01_add_5'
+  Processing 'PID_DW01_sub_1_DW01_sub_2'
+  Processing 'PID_DW01_add_1_DW01_add_6'
+  Processing 'PID_DW01_sub_2_DW01_sub_3'
+  Processing 'inert_intf_DW01_inc_0_DW01_inc_7'
+  Processing 'inertial_integrator_DW01_inc_0_DW01_inc_8'
+  Processing 'inertial_integrator_DW01_sub_0_DW01_sub_4'
+  Processing 'SPI_mnrch_0_DW01_inc_0_DW01_inc_9'
+  Processing 'navigate_DW01_cmp2_0_DW01_cmp2_9'
+  Processing 'navigate_DW01_sub_0_DW01_sub_5'
+  Processing 'navigate_DW01_cmp2_1_DW01_cmp2_10'
+  Processing 'navigate_DW01_sub_1_DW01_sub_6'
+  Processing 'navigate_DW01_cmp2_2_DW01_cmp2_11'
+  Processing 'navigate_DW01_add_0_DW01_add_7'
+  Processing 'navigate_DW01_cmp2_3_DW01_cmp2_12'
+  Processing 'navigate_DW01_cmp2_4_DW01_cmp2_13'
+  Processing 'UART_rx_DW01_dec_0'
+  Processing 'UART_tx_DW01_inc_0_DW01_inc_10'
+  Building model 'DW01_NAND2'
+  Processing 'DW01_NAND2'
+  Building model 'DW01_sub_width19' (rpl)
+  Processing 'DW01_sub_width19'
+  Building model 'DW01_sub_width19' (cla)
+  Processing 'DW01_sub_width19'
+  Building model 'DW01_add_width19' (rpl)
+  Processing 'DW01_add_width19'
+  Building model 'DW01_add_width19' (cla)
+  Processing 'DW01_add_width19'
+  Building model 'DW01_add_width27' (rpl)
+  Processing 'DW01_add_width27'
+  Building model 'DW01_add_width27' (cla)
+  Processing 'DW01_add_width27'
+  Allocating blocks in 'DW02_mult_A_width3_B_width10'
+  Building model 'DW01_MUX'
+  Processing 'DW01_MUX'
+  Building model 'DW01_mmux_width2'
+  Processing 'DW01_mmux_width2'
+  Building model 'DW01_mmux_width3'
+  Processing 'DW01_mmux_width3'
+  Building model 'DW01_mmux_width4'
+  Processing 'DW01_mmux_width4'
+  Building model 'DW01_mmux_width5'
+  Processing 'DW01_mmux_width5'
+  Building model 'DW01_add_width12' (cla)
+  Processing 'DW01_add_width12'
+  Allocating blocks in 'DW01_absval_width3'
+  Building model 'DW01_inc_width3' (cla)
+  Processing 'DW01_inc_width3'
+  Building model 'DW01_absval_width3' (cla)
+  Processing 'DW01_absval_width3'
+  Allocating blocks in 'DW01_absval_width10'
+  Building model 'DW01_inc_width10' (cla)
+  Processing 'DW01_inc_width10'
+  Building model 'DW01_absval_width10' (cla)
+  Processing 'DW01_absval_width10'
+  Building model 'DW01_inc_width13' (cla)
+  Processing 'DW01_inc_width13'
+  Building model 'DW02_mult_A_width3_B_width10' (csa)
+  Processing 'DW02_mult_A_width3_B_width10'
+  Allocating blocks in 'DW02_mult_A_width5_B_width8'
+  Building model 'DW01_add_width11' (cla)
+  Processing 'DW01_add_width11'
+  Building model 'DW02_mult_A_width5_B_width8' (csa)
+  Processing 'DW02_mult_A_width5_B_width8'
+  Building model 'DW01_add_width15' (rpl)
+  Processing 'DW01_add_width15'
+  Building model 'DW01_add_width15' (cla)
+  Processing 'DW01_add_width15'
+  Allocating blocks in 'DW02_mult_A_width12_B_width13'
+  Building model 'DW01_add_width23' (cla)
+  Processing 'DW01_add_width23'
+  Building model 'DW02_mult_A_width12_B_width13' (csa)
+  Processing 'DW02_mult_A_width12_B_width13'
+  Allocating blocks in 'DW02_mult_A_width13_B_width12'
+  Building model 'DW02_mult_A_width13_B_width12' (csa)
+  Processing 'DW02_mult_A_width13_B_width12'
+  Processing 'inertial_integrator_DW01_add_0_DW01_add_8'
+  Processing 'inertial_integrator_DW01_sub_1_DW01_sub_7'
+  Processing 'inertial_integrator_DW01_add_1_DW01_add_9'
+  Processing 'inertial_integrator_DW01_add_2_DW01_add_10'
+  Processing 'PID_DW02_mult_0'
+  Processing 'PID_DW01_absval_0_DW01_absval_1'
+  Processing 'PID_DW01_inc_0_DW01_inc_12'
+  Processing 'PID_DW01_add_2_DW01_add_11'
+  Processing 'PID_DW01_inc_1_DW01_inc_13'
+  Processing 'PID_DW02_mult_1'
+  Processing 'PID_DW01_add_3_DW01_add_12'
+  Processing 'PID_DW01_add_4_DW01_add_13'
+  Processing 'PID_DW01_add_5_DW01_add_14'
+  Processing 'MtrDrv_DW02_mult_0_DW02_mult_2'
+  Processing 'MtrDrv_DW01_add_3_DW01_add_15'
+  Processing 'MtrDrv_DW02_mult_1_DW02_mult_3'
+  Processing 'MtrDrv_DW01_add_4_DW01_add_16'
+Information: Command 'do_operand_isolation' is obsolete and is being ignored.  Please refer to the replacement command 'set power_enable_datapath_gating true' instead. (INFO-118)
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+Information: Command 'do_operand_isolation' is obsolete and is being ignored.  Please refer to the replacement command 'set power_enable_datapath_gating true' instead. (INFO-118)
+Information: The register 'iNEMO/iINT/yaw_int_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'iNEMO/iINT/yaw_int_reg[0]' is a constant and will be removed. (OPT-1206)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:09   13612.7      1.16      82.2     708.8                          
+    0:00:09   13597.0      1.19      96.7     725.9                          
+    0:00:09   13597.0      1.19      96.7     725.9                          
+    0:00:09   13597.5      1.18      95.4     725.9                          
+    0:00:10   13597.5      1.18      95.4     725.9                          
+    0:00:10   12040.3      1.20      38.9     156.4                          
+    0:00:10   11985.2      1.15      36.5     156.4                          
+    0:00:10   11983.9      1.15      36.5     156.4                          
+    0:00:11   11983.9      1.15      36.5     156.4                          
+    0:00:11   11983.9      1.15      36.5     156.4                          
+    0:00:11   11983.9      1.15      36.5     156.4                          
+    0:00:11   11949.3      1.15      36.5     156.4                          
+    0:00:11   11949.3      1.15      36.5     156.4                          
+    0:00:11   11969.4      1.15      36.4      51.6                          
+    0:00:11   11973.5      1.15      36.4       0.0                          
+    0:00:11   11973.5      1.15      36.4       0.0                          
+    0:00:11   11973.5      1.15      36.4       0.0                          
+    0:00:11   11973.5      1.15      36.4       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:11   11973.5      1.15      36.4       0.0                          
+    0:00:11   11984.9      1.14      36.1       0.0 iCNTRL/integrator_reg[15]/D
+    0:00:11   12007.3      1.12      35.4       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:11   12007.3      1.12      35.2       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:11   12007.3      1.11      35.1       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:11   12008.3      1.11      35.0       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:12   12008.3      1.11      34.8       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:12   12026.3      1.09      33.9       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:12   12043.9      1.09      33.5       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:12   12050.7      1.08      32.8       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:12   12053.5      1.07      32.5       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:13   12053.5      1.07      32.5       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:13   12072.1      1.06      32.4       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:13   12081.2      1.06      31.8       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:13   12094.2      1.05      31.4       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:13   12095.5      1.05      31.1       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:14   12097.8      1.05      31.0       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:14   12086.1      1.01      29.4       1.7                          
+    0:00:14   11986.7      1.01      29.4      45.9                          
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:14   11986.7      1.01      29.4      45.9                          
+    0:00:15   12003.0      1.00      29.1       0.0 iCNTRL/integrator_reg[11]/D
+    0:00:15   12005.5      0.99      29.2       0.0                          
+    0:00:16   12005.5      0.99      29.2       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:16   12005.5      0.99      29.2       0.0                          
+    0:00:16   12005.5      0.99      29.2       0.0                          
+    0:00:16   11897.0      1.00      26.9       0.4                          
+    0:00:16   11855.8      1.00      26.9       0.4                          
+    0:00:16   11830.9      1.00      26.9       0.4                          
+    0:00:16   11817.7      1.00      26.9       0.4                          
+    0:00:16   11804.5      1.00      26.9       0.4                          
+    0:00:16   11804.5      1.00      26.9       0.4                          
+    0:00:16   11805.8      1.00      26.9       0.0                          
+    0:00:16   11786.7      1.00      27.3       0.0                          
+    0:00:16   11781.9      1.00      27.3       0.0                          
+    0:00:16   11781.9      1.00      27.3       0.0                          
+    0:00:16   11781.9      1.00      27.3       0.0                          
+    0:00:16   11781.9      1.00      27.3       0.0                          
+    0:00:16   11781.9      1.00      27.3       0.0                          
+    0:00:16   11781.9      1.00      27.3       0.0                          
+    0:00:16   11781.9      1.00      26.9       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:16   11794.6      1.00      26.8       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:16   11795.3      0.99      26.6       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:16   11796.6      0.99      26.6       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:16   11798.4      0.99      26.5       0.0 iCNTRL/integrator_reg[12]/D
+    0:00:17   11821.8      0.99      26.5       0.0 iCNTRL/integrator_reg[14]/D
+    0:00:17   11823.0      0.99      26.0       0.0                          
+    0:00:17   11820.7      0.99      26.0       0.0                          
+    0:00:17   11820.7      0.99      26.0       0.0 iCNTRL/integrator_reg[11]/D
+    0:00:18   11820.7      0.99      26.0       0.0 iCNTRL/integrator_reg[11]/D
+    0:00:18   11820.7      0.99      26.0       0.0 iCNTRL/integrator_reg[11]/D
+    0:00:18   11820.7      0.99      26.0       0.0 iCNTRL/integrator_reg[11]/D
+    0:00:18   11820.7      0.99      26.0       0.0 iCNTRL/integrator_reg[11]/D
+    0:00:18   11820.5      0.99      26.0       0.0 iCNTRL/integrator_reg[5]/D
+    0:00:19   11815.4      0.99      26.0       0.0                          
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1

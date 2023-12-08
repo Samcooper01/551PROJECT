@@ -278,6 +278,8 @@ module MazeRunner_tb();
       end
     join
 
+	// TEST 2: takes left path to magnet using solve
+	  
   end
   
   always

@@ -48,14 +48,14 @@ module IR_math(clk, rst_n, lft_opn, rght_opn, lft_IR, rght_IR, IR_Dtrm, en_fusio
 
 	assign sum2 = div2[11:0] + dsrd_hdng[11:0]; 
 
+	//output to feed into pipelined flop
 	logic signed [11:0] dsrd_hdng_piped_in;
 
-	//output to feed into pipelined flop
-	assign dsrd_hdng_piped_in = (en_fusion ? sum2[11:0] : dsrd_hdng[11:0]); 
-	assign dsrd_hdng_adj = dsrd_hdng_piped_in;
+	assign dsrd_hdng_piped_in = en_fusion ? sum2[11:0] : dsrd_hdng[11:0]; 
+	//assign dsrd_hdng_adj = dsrd_hdng_piped_in;
 	always_ff @(posedge clk, negedge rst_n)
 		if (!rst_n) 
-			dsrd_hdng_adj <= 1'b0;
+			dsrd_hdng_adj <= 12'b0;
 		else 
 			dsrd_hdng_adj <= dsrd_hdng_piped_in; 
 endmodule

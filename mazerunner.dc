@@ -15,7 +15,7 @@ link
 ###########################################
 # create clk and tell syn to not touch it #
 ###########################################
-create_clock -name "clk" -period 2.5 -waveform {0 1.25} {clk}
+create_clock -name "clk" -period 2.75 clk
 set_dont_touch_network [find port clk]
 
 ############################################

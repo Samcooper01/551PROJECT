@@ -57,13 +57,13 @@ module MazeRunner_tb();
 	  batt = 12'hDA0;  	// this is value to use with RunnerPhysics
     cmd = 16'h0000;
     send_cmd = 1'b0;
-    //rst_n = 1'b1;
+    RST_n = 1'b1;
     clk = 1'b0;
     // hall_n maybe
 
     // TEST 1: takes right path to magnet manually
-    //@(negedge clk) rst_n = 0;
-    //@(negedge clk) rst_n = 1;
+    @(negedge clk) RST_n = 0;
+    @(negedge clk) RST_n = 1;
 
     // send calibrate command, check for pos ack
     cmd = 16'h0000;
@@ -94,7 +94,7 @@ module MazeRunner_tb();
       begin
         @(posedge resp_rdy);
         disable to2;
-        $display("GOOD: received resp_rdy in tow");
+        $display("GOOD: received resp_rdy in to2");
         if (resp !== 8'hA5) begin
           $display("ERR: resp did not contain 0xA5 in to2\n");
           $stop();
@@ -278,8 +278,11 @@ module MazeRunner_tb();
       end
     join
 
+
 	// TEST 2: takes left path to magnet using solve
-	  
+	
+	
+	
   end
   
   always

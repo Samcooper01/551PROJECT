@@ -28,6 +28,7 @@ module cmd_proc(clk, rst_n, cmd, cmd_rdy, clr_cmd_rdy, send_resp, strt_cal, cal_
 	input logic clk, rst_n;		
 	
 	//flop for stp_lft, stp_rght
+	/*
 	always @(posedge clk, negedge rst_n) begin 
 		if (!rst_n) begin 
 			stp_lft <= 1'b0;
@@ -37,15 +38,16 @@ module cmd_proc(clk, rst_n, cmd, cmd_rdy, clr_cmd_rdy, send_resp, strt_cal, cal_
 			stp_lft <= cmd[1];
 			stp_rght <= cmd[0]; 
 		end 
-	end 
+	end
+	*/ 
 
 	//heading register
-	logic [11:0] nxt_hdng; 
+	logic assign_nxt_hdng; 
 	always @(posedge clk, negedge rst_n) begin 
 		if (!rst_n)
 			dsrd_hdng <= 12'h000;
-		else 
-			dsrd_hdng <= nxt_hdng; 
+		else if (assign_nxt_hdng)
+			dsrd_hdng <= cmd[11:0]; 
 	end
 
 	// define SM enum type 
@@ -80,6 +82,7 @@ module cmd_proc(clk, rst_n, cmd, cmd_rdy, clr_cmd_rdy, send_resp, strt_cal, cal_
 		send_resp = 0;
 		cmd_md = 1;
 		in_cal = 0;
+		assign_nxt_hdng = 0; 
 		next_state = state;
 		
 		case (state) 
@@ -92,7 +95,7 @@ module cmd_proc(clk, rst_n, cmd, cmd_rdy, clr_cmd_rdy, send_resp, strt_cal, cal_
 
 					else if (cmd[15:13] == 3'b001) begin
 						strt_hdng = 1;
-						nxt_hdng = cmd[11:0]; 					//capture dsrd_hdng from cmd word
+						assign_nxt_hdng = 1; 					//capture dsrd_hdng from cmd word
 						next_state = HEADING;
 					end
 
@@ -126,8 +129,8 @@ module cmd_proc(clk, rst_n, cmd, cmd_rdy, clr_cmd_rdy, send_resp, strt_cal, cal_
 
 			MOVE: begin
 				//UPDATE: stp_left st_rght assignments moved from IDLE state
-				//if (cmd[1] == 1'b1) stp_lft = 1'b1;
-				//if (cmd[0] == 1'b1) stp_rght = 1'b1;
+				if (cmd[1] == 1'b1) stp_lft = 1'b1;
+				if (cmd[0] == 1'b1) stp_rght = 1'b1;
 
 				if (mv_cmplt) begin
 					send_resp = 1;

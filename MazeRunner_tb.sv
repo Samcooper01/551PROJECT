@@ -102,6 +102,8 @@ module MazeRunner_tb();
       end
     join
 		
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    
     // send heading command to north
     cmd = 16'h2000;
     @(posedge clk) send_cmd = 1;
@@ -177,6 +179,14 @@ module MazeRunner_tb();
         $display("GOOD: received resp_rdy in to5\n");
       end
     join
+
+    /* NW OBSERVATION
+        I'm not postive that actl_hdng ever changed from the turn left commmand
+
+        ---See what im seeing---
+        Add desired heading and actual heading from iCNTRL 
+        dsrd heading was updated to 0x3FF but actual heading only makes it to 0x009 by the time the following if statement is evaluated
+    */ 
 
     // check if heading was updated properly
     if (!((0.70 * HEADING_MAX) < iPHYS.heading_robot[19:8] || iPHYS.heading_robot[19:8] < (0.80 * HEADING_MAX))) begin
@@ -352,6 +362,7 @@ module MazeRunner_tb();
     join
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// TEST 2: takes left path to magnet using solve
 	@(negedge clk) RST_n = 0;
     @(negedge clk) RST_n = 1;

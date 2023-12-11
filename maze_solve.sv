@@ -17,10 +17,11 @@ module maze_solve(
     // Heading register // 
     /////////////////////
     logic signed [11:0] nxt_hdng; 
+    logic assign_nxt_hdng; 
     always_ff @(posedge clk, negedge rst_n)
         if (!rst_n)
             dsrd_hdng <= 12'h000;
-        else 
+        else if (assign_nxt_hdng)
             dsrd_hdng  <= nxt_hdng; 
 
     /////////////////////////////////////////////
@@ -56,6 +57,8 @@ module maze_solve(
     always_comb begin : SM
         strt_mv = 0; 
         strt_hdng = 0;
+        nxt_hdng = 12'h000; 
+        assign_nxt_hdng = 0; 
         nxt_state = state;
 
         case (state) 
@@ -90,6 +93,7 @@ module maze_solve(
                             12'hC00 : 
                                 nxt_hdng = 12'h000; 
                         endcase 
+                        assign_nxt_hdng = 1;
                     end
 
                     //TURNING RIGHT
@@ -104,6 +108,7 @@ module maze_solve(
                             12'h3FF : 
                                 nxt_hdng = 12'h000; 
                         endcase 
+                        assign_nxt_hdng = 1;
                     end 
 
                     //TURNING 180
@@ -118,6 +123,7 @@ module maze_solve(
                             12'h3FF : 
                                 nxt_hdng = 12'hC00; 
                         endcase 
+                        assign_nxt_hdng = 1;
                     end 
                     
                     nxt_state = START_HEADING;

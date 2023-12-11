@@ -357,8 +357,6 @@ module MazeRunner_tb();
 
 
 	// TEST 2: takes left path to magnet using solve
-	@(negedge clk) RST_n = 0;
-    @(negedge clk) RST_n = 1;
 	
 	cmd = 16'h6001;
     @(posedge clk) send_cmd = 1;

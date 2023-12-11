@@ -21,6 +21,7 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 	// 		filter at_hdng to be high for multipe 	   //
 	//		consecutive clock 						  //	
 	///////////////////////////////////////////////////
+	/*
 	logic 	at_hdng_dly,
 			at_hdng_re; 
 	always_ff @(posedge clk, negedge rst_n)
@@ -30,6 +31,7 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 			at_hdng_dly <= at_hdng;
 
 	assign at_hdng_re = at_hdng & ~at_hdng_dly; 
+	*/
 
 	logic lft_opn_rise, rght_opn_rise; // edges
 	logic nxt_opn_lft, nxt_opn_rght; // next opn signal after flop
@@ -111,10 +113,9 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 			// cases
 			case (state)
 				HDNG:
-					if (!at_hdng_dly)
+					if (!at_hdng)
 						moving = 1;
-					else 
-					if (at_hdng_dly) begin
+					else begin
 						mv_cmplt = 1;
 						next_state = IDLE;
 					end

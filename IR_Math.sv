@@ -52,12 +52,13 @@ module IR_math(clk, rst_n, lft_opn, rght_opn, lft_IR, rght_IR, IR_Dtrm, en_fusio
 	logic signed [11:0] dsrd_hdng_piped_in;
 
 
-	//assign dsrd_hdng_adj = en_fusion ? sum2[11:0] : dsrd_hdng[11:0]; 
+	assign dsrd_hdng_adj = en_fusion ? sum2[11:0] : dsrd_hdng[11:0]; 
 	
+	/*
 	///////////////////////////////////////////////////////////////
 	// TIMING SOLUTION: Pipeline block 1						// 
-	// 	Slow down input path to PID 						   //
-	// 		-> goto PID module for the other side of this fix //
+	// 	Slow down input path to navigate					   //
+	// 		-> goto nav module for the other side of this fix //
 	///////////////////////////////////////////////////////////
 	assign dsrd_hdng_piped_in = en_fusion ? sum2[11:0] : dsrd_hdng[11:0]; 
 	//assign dsrd_hdng_adj = dsrd_hdng_piped_in;
@@ -67,5 +68,6 @@ module IR_math(clk, rst_n, lft_opn, rght_opn, lft_IR, rght_IR, IR_Dtrm, en_fusio
 			dsrd_hdng_adj <= 12'b0;
 		else 
 			dsrd_hdng_adj <= dsrd_hdng_piped_in;
+	*/
 endmodule
 	

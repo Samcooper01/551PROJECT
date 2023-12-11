@@ -1,7 +1,7 @@
 #####################
 # Read in all files #
 #####################
-read_file -format sverilog {MazeRunner.sv reset_synch.sv inert_intf.sv inertial_integrator.sv SPI_iNEMO4.sv \
+read_file -format sverilog {MazeRunner.sv reset_synch.sv inert_intf.sv inertial_integrator.sv \
                             maze_solve.sv navigate.sv cmd_proc.sv IR_Math.sv UART_wrapper.sv UART.sv \
                             UART_tx.sv UART_rx.sv PID.sv MtrDrv.sv piezo_drv.sv DutyScaleROM.sv SPI_mnrch.sv \
                             PWM12.sv sensor_intf.sv A2D_intf.sv PWM8.sv }

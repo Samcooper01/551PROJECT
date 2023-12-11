@@ -101,8 +101,7 @@ module MazeRunner_tb();
         end
       end
     join
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*
+		
     // send heading command to north
     cmd = 16'h2000;
     @(posedge clk) send_cmd = 1;
@@ -351,15 +350,48 @@ module MazeRunner_tb();
         $display("GOOD: EUREKA! found the jawn\n");
       end
     join
-	*/
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 	// TEST 2: takes left path to magnet using solve
 	@(negedge clk) RST_n = 0;
     @(negedge clk) RST_n = 1;
-	
+    // send calibrate command, check for pos ack
+    cmd = 16'h0000;
+    @(posedge clk) send_cmd = 1;
+    @(posedge clk) send_cmd = 0;
+
+    // wait for cmd_sent
+    fork
+      begin: totest2
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for cmd_sent in totest2\n");
+        $stop();
+      end: totest2
+      begin
+        @(posedge cmd_sent);
+        disable totest2;
+        $display("GOOD: received cmd_sent in totest2\n");
+      end
+    join
+
+    // wait for resp_rdy and check
+    fork
+      begin: to12
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to12\n");
+        $stop();
+      end: to12
+      begin
+        @(posedge resp_rdy);
+        disable to12;
+        $display("GOOD: received resp_rdy in to12");
+        if (resp !== 8'hA5) begin
+          $display("ERR: resp did not contain 0xA5 in to12\n");
+          $stop();
+        end
+      end
+    join
+
 	cmd = 16'h6001;
     @(posedge clk) send_cmd = 1;
     @(posedge clk) send_cmd = 0;
@@ -392,6 +424,83 @@ module MazeRunner_tb();
       begin
         @(posedge piezo);
         disable toend2;
+        $display("GOOD: EUREKA! found the jawn\n");
+      end
+    join
+
+
+	// TEST 3: takes lright path to magnet using solve
+	@(negedge clk) RST_n = 0;
+    @(negedge clk) RST_n = 1;
+    // send calibrate command, check for pos ack
+    cmd = 16'h0000;
+    @(posedge clk) send_cmd = 1;
+    @(posedge clk) send_cmd = 0;
+
+    // wait for cmd_sent
+    fork
+      begin: totest3
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for cmd_sent in totest3\n");
+        $stop();
+      end: totest3
+      begin
+        @(posedge cmd_sent);
+        disable totest3;
+        $display("GOOD: received cmd_sent in totest3\n");
+      end
+    join
+
+    // wait for resp_rdy and check
+    fork
+      begin: to13
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to13\n");
+        $stop();
+      end: to13
+      begin
+        @(posedge resp_rdy);
+        disable to13;
+        $display("GOOD: received resp_rdy in to13");
+        if (resp !== 8'hA5) begin
+          $display("ERR: resp did not contain 0xA5 in to13\n");
+          $stop();
+        end
+      end
+    join
+		
+	cmd = 16'h6000;
+    @(posedge clk) send_cmd = 1;
+    @(posedge clk) send_cmd = 0;
+	
+	fork
+      begin: to14
+        repeat(256000000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to14\n");
+        $stop();
+      end: to14
+      begin
+        @(posedge resp_rdy);
+        disable to14;
+        $display("GOOD: received resp_rdy in to14\n");
+      end
+    join
+	
+	// check that the robot is in (3,3)
+    if (iPHYS.xx[14:12] !== 3 || iPHYS.yy[14:12] !== 3) begin
+      $display("ERR: robot is not in (3,3) after first move\n");
+      $stop();
+    end
+    // wait for Piezo
+    fork
+      begin: toend3
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for piezo in toend3\n");
+        $stop();
+      end: toend3
+      begin
+        @(posedge piezo);
+        disable toend3;
         $display("GOOD: EUREKA! found the jawn\n");
       end
     join

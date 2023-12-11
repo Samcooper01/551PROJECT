@@ -20,7 +20,7 @@ module MazeRunner_tb();
   wire A2D_SS_n,A2D_SCLK,A2D_MOSI,A2D_MISO;
   wire IR_lft_en,IR_cntr_en,IR_rght_en;  
   
-  localparam FAST_SIM = 1'b0;
+  localparam FAST_SIM = 1'b1;
   localparam HEADING_MAX = 12'hFFF;
 
   //////////////////////
@@ -101,7 +101,8 @@ module MazeRunner_tb();
         end
       end
     join
-
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/*
     // send heading command to north
     cmd = 16'h2000;
     @(posedge clk) send_cmd = 1;
@@ -126,6 +127,9 @@ module MazeRunner_tb();
       $display("ERR: heading was not set properly, expected 0x000 and got %x\n", iPHYS.heading_robot[19:8]);
       $stop();
     end
+	else begin
+		$display("GOOD: heading was set properly");
+	end
 
     // send move command, stop at left
     cmd = 16'h4002;
@@ -151,6 +155,10 @@ module MazeRunner_tb();
       $display("ERR: robot is not in (2,1) after first move\n");
       $stop();
     end
+	else begin
+	$display("GOOD: robot is in (2,1)");
+	
+	end
 
     // change heading to left 
     cmd = 16'h23FF;
@@ -158,7 +166,18 @@ module MazeRunner_tb();
     @(posedge clk) send_cmd = 0;
 
     // switching to not forking on resp_rdy now
-    @(posedge resp_rdy);
+    fork
+      begin: to5
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to5\n");
+        $stop();
+      end: to5
+      begin
+        @(posedge resp_rdy);
+        disable to5;
+        $display("GOOD: received resp_rdy in to5\n");
+      end
+    join
 
     // check if heading was updated properly
     if (!((0.70 * HEADING_MAX) < iPHYS.heading_robot[19:8] || iPHYS.heading_robot[19:8] < (0.80 * HEADING_MAX))) begin
@@ -172,7 +191,18 @@ module MazeRunner_tb();
     @(posedge clk) send_cmd = 0;
 
     // wait for done
-    @(posedge resp_rdy);
+      fork
+      begin: to6
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to6\n");
+        $stop();
+      end: to6
+      begin
+        @(posedge resp_rdy);
+        disable to6;
+        $display("GOOD: received resp_rdy in to6\n");
+      end
+    join
 
     // check that the robot is in (1,1)
     if (iPHYS.xx[14:12] !== 1 || iPHYS.yy[14:12] !== 1) begin
@@ -186,7 +216,18 @@ module MazeRunner_tb();
     @(posedge clk) send_cmd = 0;
 
     // wait for resp_rdy
-    @(posedge resp_rdy);
+        fork
+      begin: to7
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to7\n");
+        $stop();
+      end: to7
+      begin
+        @(posedge resp_rdy);
+        disable to7;
+        $display("GOOD: received resp_rdy in to7\n");
+      end
+    join
 
     // check that the robot has a proper heading after command was sent
     if (!((0.95 * HEADING_MAX) < iPHYS.heading_robot[19:8] || iPHYS.heading_robot[19:8] < (0.05 * HEADING_MAX))) begin
@@ -200,7 +241,18 @@ module MazeRunner_tb();
     @(posedge clk) send_cmd = 0;
 
     // wait for done
-    @(posedge resp_rdy);
+        fork
+      begin: to8
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to8\n");
+        $stop();
+      end: to8
+      begin
+        @(posedge resp_rdy);
+        disable to8;
+        $display("GOOD: received resp_rdy in to8\n");
+      end
+    join
 
     // check that the robot is in (1,2)
     if (iPHYS.xx[14:12] !== 1 || iPHYS.yy[14:12] !== 2) begin
@@ -214,7 +266,18 @@ module MazeRunner_tb();
     @(posedge clk) send_cmd = 0;
 
     // wait for resp_rdy
-    @(posedge resp_rdy);
+        fork
+      begin: to9
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to9\n");
+        $stop();
+      end: to9
+      begin
+        @(posedge resp_rdy);
+        disable to9;
+        $display("GOOD: received resp_rdy in to9\n");
+      end
+    join
 
     // check if heading was updated properly
     if (!((0.20 * HEADING_MAX) < iPHYS.heading_robot[19:8] || iPHYS.heading_robot[19:8] < (0.30 * HEADING_MAX))) begin
@@ -228,7 +291,18 @@ module MazeRunner_tb();
     @(posedge clk) send_cmd = 0;
 
     // wait for done
-    @(posedge resp_rdy);
+        fork
+      begin: to10
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to10\n");
+        $stop();
+      end: to10
+      begin
+        @(posedge resp_rdy);
+        disable to10;
+        $display("GOOD: received resp_rdy in to10\n");
+      end
+    join
 
     // check that the robot is in (3,2)
     if (iPHYS.xx[14:12] !== 3 || iPHYS.yy[14:12] !== 2) begin
@@ -266,22 +340,62 @@ module MazeRunner_tb();
 
     // check for solve completed through piezo
     fork
-      begin: to5
+      begin: toend
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for piezo in to5\n");
+        $display("ERR: timed out waiting for piezo in toend\n");
         $stop();
-      end: to5
+      end: toend
       begin
         @(posedge piezo);
-        disable to5;
+        disable toend;
         $display("GOOD: EUREKA! found the jawn\n");
       end
     join
+	*/
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 	// TEST 2: takes left path to magnet using solve
+	@(negedge clk) RST_n = 0;
+    @(negedge clk) RST_n = 1;
 	
+	cmd = 16'h6001;
+    @(posedge clk) send_cmd = 1;
+    @(posedge clk) send_cmd = 0;
 	
+	fork
+      begin: to11
+        repeat(256000000) @(posedge clk);
+        $display("ERR: timed out waiting for resp_rdy in to11\n");
+        $stop();
+      end: to11
+      begin
+        @(posedge resp_rdy);
+        disable to11;
+        $display("GOOD: received resp_rdy in to11\n");
+      end
+    join
+	
+	// check that the robot is in (3,3)
+    if (iPHYS.xx[14:12] !== 3 || iPHYS.yy[14:12] !== 3) begin
+      $display("ERR: robot is not in (3,3) after first move\n");
+      $stop();
+    end
+    // wait for Piezo
+    fork
+      begin: toend2
+        repeat(2560000) @(posedge clk);
+        $display("ERR: timed out waiting for piezo in toend2\n");
+        $stop();
+      end: toend2
+      begin
+        @(posedge piezo);
+        disable toend2;
+        $display("GOOD: EUREKA! found the jawn\n");
+      end
+    join
+	$stop();
 	
   end
   

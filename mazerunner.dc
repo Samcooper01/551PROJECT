@@ -62,4 +62,8 @@ ungroup -all -flatten
 compile -map_effort medium
 
 report_timing -delay min 
-report_timing -delay max 
+report_timing -delay max
+report_area > mazerunner_area.txt
+
+# write final netlist 
+write -format verilog MazeRunner -output MazeRunner.vg

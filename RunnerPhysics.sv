@@ -91,7 +91,7 @@ module RunnerPhysics(clk,RST_n,SS_n,SCLK,MISO,MOSI,INT,lftPWM1,lftPWM2,rghtPWM1,
 	//// Now update position on board xx,yy based on heading & speed /////
 	if ((omega_lft>$signed(16'd1000)) && (omega_rght>$signed(16'd1000))) begin // both wheels moving forward
 	  case (heading_robot[19:8]) inside
-	    [12'h370:12'h490] : begin		//  West
+	    [12'h330:12'h4D0] : begin		//  West
 	            ordinal_err = 12'h3FF - heading_robot[19:8];
 		    xx = xx - dist_increment;
 			if (omega_sum>17'd10000)
@@ -100,7 +100,7 @@ module RunnerPhysics(clk,RST_n,SS_n,SCLK,MISO,MOSI,INT,lftPWM1,lftPWM2,rghtPWM1,
 			  else									// south of pure west
 			    yy = yy - (heading_robot[19:12] - 8'h3F);
 		end
-		[12'hB70:12'hC90] : begin		//  East
+		[12'hB30:12'hCD0] : begin		//  East
 	            ordinal_err = 12'hC00 - heading_robot[19:8];
 		    xx = xx + dist_increment;
 			if (omega_sum>17'd10000)
@@ -109,25 +109,25 @@ module RunnerPhysics(clk,RST_n,SS_n,SCLK,MISO,MOSI,INT,lftPWM1,lftPWM2,rghtPWM1,
 			  else									// north of pure east
 			    yy = yy + (heading_robot[19:12] - 8'hBF);
 		end
-		[12'h770:12'h7FF] : begin		// west of pure south
+		[12'h730:12'h7FF] : begin		// west of pure south
 	            ordinal_err = 12'h7FF - heading_robot[19:8];
 		    yy = yy - dist_increment;
 			if (omega_sum>17'd10000)
 			  xx = xx - (8'h7F - heading_robot[19:12]);
         end
-		[12'h800:12'h890] : begin		// east of pure south
+		[12'h800:12'h8D0] : begin		// east of pure south
 	            ordinal_err = 12'h800 - heading_robot[19:8];
 		    yy = yy - dist_increment;
 			if (omega_sum>17'd10000)
 			  xx = xx + (heading_robot[19:12] - 8'h80);
         end		  
-		[12'h000:12'h090] : begin						// west of pure north
+		[12'h000:12'h0D0] : begin						// west of pure north
 	            ordinal_err = -heading_robot[19:8];
 		    yy = yy + dist_increment;
 			if (omega_sum>17'd10000)
 			  xx = xx - heading_robot[19:12];
 		end
-		[12'hF70:12'hFFF] : begin						// east of pure north
+		[12'hF30:12'hFFF] : begin						// east of pure north
 	            ordinal_err = -heading_robot[19:8];
 		    yy = yy + dist_increment;
 			if (omega_sum>17'd10000)
@@ -264,7 +264,7 @@ module RunnerPhysics(clk,RST_n,SS_n,SCLK,MISO,MOSI,INT,lftPWM1,lftPWM2,rghtPWM1,
     reg [3:0] y_indx,x_indx;
 	
 	case (heading_robot[19:8]) inside
-	    [12'h361:12'h49F] : begin		//  West
+	    [12'h321:12'h4DF] : begin		//  West
 		  x_indx = (xx[13:8] + 6'h5)>>4;	// slow onset of no fence detect
 		  if (mazeModel[xx[13:12]][yy[13:12]]&4'h1) begin // forward
 		    if (xx[11:0]<12'h800)
@@ -280,7 +280,7 @@ module RunnerPhysics(clk,RST_n,SS_n,SCLK,MISO,MOSI,INT,lftPWM1,lftPWM2,rghtPWM1,
 		  else
 		    lftIR = 12'hFFF;
 		end
-		[12'hB61:12'hC9F] : begin		//  East
+		[12'hB21:12'hCDF] : begin		//  East
 		  x_indx = (xx[13:8] - 6'h5)>>4;	// slow onset of no fence detect
 		  if (mazeModel[xx[13:12]][yy[13:12]]&4'h2) begin // forward
 		    if (xx[11:0]>12'h800)
@@ -296,7 +296,7 @@ module RunnerPhysics(clk,RST_n,SS_n,SCLK,MISO,MOSI,INT,lftPWM1,lftPWM2,rghtPWM1,
 		  else
 		    lftIR = 12'hFFF;
 		end
-		[12'h761:12'h89F] : begin		//  south
+		[12'h721:12'h8DF] : begin		//  south
 		  y_indx = (yy[13:8] + 6'h5)>>4;	// slow onset of no fence detect
 		  if (mazeModel[xx[13:12]][yy[13:12]]&4'h4) begin // forward
 		    if (yy[11:0]<12'h800)
@@ -312,7 +312,7 @@ module RunnerPhysics(clk,RST_n,SS_n,SCLK,MISO,MOSI,INT,lftPWM1,lftPWM2,rghtPWM1,
 		  else
 		    lftIR = 12'hFFF;
         end
-	        [12'h000:12'h09F] : begin 		// West of pure North
+	        [12'h000:12'h0DF] : begin 		// West of pure North
 		  y_indx = (yy[13:8] - 6'h5)>>4;	// slow onset of no fence detect
 		  if (mazeModel[xx[13:12]][yy[13:12]]&4'h8) begin // forward
 		    if (yy[11:0]>12'h800)
@@ -328,7 +328,7 @@ module RunnerPhysics(clk,RST_n,SS_n,SCLK,MISO,MOSI,INT,lftPWM1,lftPWM2,rghtPWM1,
 		  else
 		    lftIR = 12'hFFF;		  
 		end
-                [12'hF61:12'hFFF] : begin 		// East of pure North
+                [12'hF21:12'hFFF] : begin 		// East of pure North
 		  y_indx = (yy[13:8] - 6'h5)>>4;	// slow onset of no fence detect
 		  if (mazeModel[xx[13:12]][yy[13:12]]&4'h8) begin // forward
 		    if (yy[11:0]>12'h800)

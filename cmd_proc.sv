@@ -27,6 +27,27 @@ module cmd_proc(clk, rst_n, cmd, cmd_rdy, clr_cmd_rdy, send_resp, strt_cal, cal_
 	output logic cmd_md;			// for navigate muxing
 	input logic clk, rst_n;		
 	
+	//flop for stp_lft, stp_rght
+	always @(posedge clk, negedge rst_n) begin 
+		if (!rst_n) begin 
+			stp_lft <= 1'b0;
+			stp_rght <= 1'b0;
+		end
+		else begin
+			stp_lft <= cmd[1];
+			stp_rght <= cmd[0]; 
+		end 
+	end 
+
+	//heading register
+	logic [11:0] nxt_hdng; 
+	always @(posedge clk, negedge rst_n) begin 
+		if (!rst_n)
+			dsrd_hdng <= 12'h000;
+		else 
+			dsrd_hdng <= nxt_hdng; 
+	end
+
 	// define SM enum type 
 	typedef enum logic [2:0] {IDLE, MOVE, HEADING, CALIBRATE, SOLVE} state_t;
 	state_t state, next_state;
@@ -71,7 +92,7 @@ module cmd_proc(clk, rst_n, cmd, cmd_rdy, clr_cmd_rdy, send_resp, strt_cal, cal_
 
 					else if (cmd[15:13] == 3'b001) begin
 						strt_hdng = 1;
-						dsrd_hdng = cmd[11:0]; 					//capture dsrd_hdng from cmd word
+						nxt_hdng = cmd[11:0]; 					//capture dsrd_hdng from cmd word
 						next_state = HEADING;
 					end
 
@@ -105,8 +126,8 @@ module cmd_proc(clk, rst_n, cmd, cmd_rdy, clr_cmd_rdy, send_resp, strt_cal, cal_
 
 			MOVE: begin
 				//UPDATE: stp_left st_rght assignments moved from IDLE state
-				if (cmd[1] == 1'b1) stp_lft = 1'b1;
-				if (cmd[0] == 1'b1) stp_rght = 1'b1;
+				//if (cmd[1] == 1'b1) stp_lft = 1'b1;
+				//if (cmd[0] == 1'b1) stp_rght = 1'b1;
 
 				if (mv_cmplt) begin
 					send_resp = 1;

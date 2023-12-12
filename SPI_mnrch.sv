@@ -107,9 +107,9 @@ always_comb begin
 
 	case (state) 
 		IDLE : begin  
+			ld_SCLK = 1'b1;
 			if (wrt) begin 
-				init = 1'b1;
-				ld_SCLK = 1'b1;				
+				init = 1'b1;				
 				nxt_state = TRANS_BEGIN;
 			end
 		end

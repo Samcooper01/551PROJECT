@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module MazeRunner_tb();
   
   reg clk,RST_n;				// clock and reset

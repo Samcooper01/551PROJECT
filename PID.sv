@@ -16,7 +16,18 @@ module PID(clk, rst_n, moving, hdng_vld, dsrd_hdng, actl_hdng, frwrd_spd, at_hdn
 	/////////////////////////////
 	logic signed [11:0] error;
 	assign error = actl_hdng - dsrd_hdng; 
-	
+
+	//////////
+	// PIPELINE SOLUTION 
+	// 	-> slow down the subtractor feeding into PID
+	///////////
+	logic signed [11:0] error_piped;
+	always_ff @(posedge clk, negedge rst_n)
+		if (!rst_n)
+			error_piped <= 12'h000;
+		else 
+			error_piped <= error;
+
 	//////////////////////////////
 	//	paste in P term module //
 	////////////////////////////
@@ -29,13 +40,40 @@ module PID(clk, rst_n, moving, hdng_vld, dsrd_hdng, actl_hdng, frwrd_spd, at_hdn
 	//test if pos (check msb == 0)
 	//checking on bits (10:9) set 
 		//if not all are 
-	assign err_sat = (error[11] && !(&error[10:9])) ? 10'h200 : //neg case not all bits[10:9] are set -> sat to most neg value 
-			(!error[11] && |error[10:9]) ? 10'h1FF : //any bits set[10:9] -> sat to most pos value
-			error[9:0]; 
+	assign err_sat = (error_piped[11] && !(&error_piped[10:9])) ? 10'h200 : //neg case not all bits[10:9] are set -> sat to most neg value 
+			(!error_piped[11] && |error_piped[10:9]) ? 10'h1FF : //any bits set[10:9] -> sat to most pos value
+			error_piped[9:0]; 
 
+	/*
+	///////////////////////////////////////////////////
+	// PIPELINE SOLUTION 							//
+	// 	-> slow down err_sat going into P I and D  //
+	////////////////////////////////////////////////
+	logic [9:0] err_sat_piped; 
+	always_ff @(posedge clk, negedge rst_n)
+		if (!rst_n)
+			err_sat_piped <= 10'h000;
+		else 
+			err_sat_piped <= P_term_int;
+
+	assign P_term_int[13:0] =  $signed(P_COEFF) * err_sat_piped;
+	*/ 
 	assign P_term_int[13:0] =  $signed(P_COEFF) * err_sat;
+
+	///////////////////////////////////////////////
+	// PIPELINE SOLUTION 						//
+	//	-> pipe before each SE on PID blocks   //
+	////////////////////////////////////////////
+	logic signed [13:0] P_term_int_piped;
+	always_ff @(posedge clk, negedge rst_n)
+		if (!rst_n)
+			P_term_int_piped <= 13'h0000;
+		else 
+			P_term_int_piped <= P_term_int;
+
+	assign P_term = P_term_int_piped[13] ? {1'b1,P_term_int_piped[13:0]} : {1'b0,P_term_int_piped[13:0]}; 
 	
-	assign P_term = P_term_int[13] ? {1'b1,P_term_int[13:0]} : {1'b0,P_term_int[13:0]}; 	
+	//assign P_term = P_term_int[13] ? {1'b1,P_term_int[13:0]} : {1'b0,P_term_int[13:0]}; 	
 
 	//////////////////////////////
 	//	paste in I term module //
@@ -72,8 +110,20 @@ module PID(clk, rst_n, moving, hdng_vld, dsrd_hdng, actl_hdng, frwrd_spd, at_hdn
 
 	assign I_term_int = integrator[15:4];
 
-	assign I_term = I_term_int[11] ? {3'b111,I_term_int[11:0]} : {3'b000,I_term_int[11:0]};
+	///////////////////////////////////////////////
+	// PIPELINE SOLUTION 						//
+	//	-> pipe before each SE on PID blocks   //
+	////////////////////////////////////////////
+	logic signed [11:0] I_term_int_piped;
+	always_ff @(posedge clk, negedge rst_n)
+		if (!rst_n)
+			I_term_int_piped <= 12'h000;
+		else 
+			I_term_int_piped <= I_term_int;
 
+	assign I_term = I_term_int_piped[11] ? {3'b111,I_term_int_piped[11:0]} : {3'b000,I_term_int_piped[11:0]};
+
+	//assign I_term = I_term_int[11] ? {3'b111,I_term_int[11:0]} : {3'b000,I_term_int[11:0]};
 
 	//////////////////////////////
 	//	paste in D term module //
@@ -103,10 +153,40 @@ module PID(clk, rst_n, moving, hdng_vld, dsrd_hdng, actl_hdng, frwrd_spd, at_hdn
 					(!D_diff[10] && |D_diff[9:7]) ? 8'h7F : 			//any bits set[8:7] -> sat to most pos value
 					D_diff[7:0]; 
 
+	/*
+	//////////////
+	// PIPELINE SOLUTION 
+	//		-> slow down after D sat 
+	///////////
+	logic [7:0] D_sat_piped;
+	always_ff @(posedge clk, negedge rst_n)
+		if (!rst_n)
+			D_sat_piped <= 8'h00;
+		else 
+			D_sat_piped <= D_sat;
+
+	assign D_term_int = $signed(D_COEFF) * D_sat_piped;
+	*/
+
 	assign D_term_int = $signed(D_COEFF) * D_sat;
+
+	
+	///////////////////////////////////////////////
+	// PIPELINE SOLUTION 						//
+	//	-> pipe before each SE on PID blocks   //
+	////////////////////////////////////////////
+	logic signed [14:0] D_term_int_piped;
+	always_ff @(posedge clk, negedge rst_n)
+		if (!rst_n)
+			D_term_int_piped <= 14'h0000;
+		else 
+			D_term_int_piped <= D_term_int;
+
+	//sign extension of D term
+	assign D_term = D_term_int_piped[12] ? {2'b11,D_term_int_piped[12:0]} : {2'b00,D_term_int_piped[12:0]}; 
 	
 	//sign extension of D term
-	assign D_term = D_term_int[12] ? {2'b11,D_term_int[12:0]} : {2'b00,D_term_int[12:0]}; 
+	//assign D_term = D_term_int[12] ? {2'b11,D_term_int[12:0]} : {2'b00,D_term_int[12:0]}; 
 
 	////////////////////////////////////////////////////////////
 	//	logic completed after PID terms have been calculated //
@@ -115,6 +195,12 @@ module PID(clk, rst_n, moving, hdng_vld, dsrd_hdng, actl_hdng, frwrd_spd, at_hdn
 	logic signed [11:0] PID_div8; 
 	logic signed [11:0]	lft_spd_fct, 
 						rght_spd_fct;
+
+	////////////////////////////////
+	// TIMING SOLUTION 
+	//		-> slow down addition of 
+	//			P+I+D
+	////////////////////////////////
 
 	assign PID = P_term + I_term + D_term;  
 	assign PID_div8 = PID[14:3];

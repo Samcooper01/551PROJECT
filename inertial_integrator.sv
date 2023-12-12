@@ -12,7 +12,28 @@ module inertial_integrator(clk,rst_n,strt_cal,cal_done,vld,rdy,yaw_rt,
   input en_fusion;						// only enable fusion when moving forward at decent clip
   output logic cal_done;				// asserted when calibration is completed
   output reg rdy;
-  output signed [11:0] heading;
+  output logic signed [11:0] heading;
+
+
+    //////////////////////////////////////////////////////
+    // PIPELINE SOLUTION                               //
+    //    -> slow down heading into following blocks  //
+    //        must also slow down rdy                //
+    //////////////////////////////////////////////////
+    logic signed [11:0] heading_piped; 
+    logic rdy_piped1, 
+          rdy_piped2;
+    always_ff @(posedge clk, negedge rst_n) 
+      if (!rst_n) begin 
+        rdy <= 1'b0; 
+        heading <= 12'h000; 
+      end
+      else begin 
+        rdy <= rdy_piped1; 
+        rdy_piped1 <= rdy_piped2;
+        heading <= heading_piped;
+      end
+  
 
   ////////////////////////////////////////////////////////
   // Internal registers (pipelined for timing reasons) //
@@ -154,11 +175,11 @@ module inertial_integrator(clk,rst_n,strt_cal,cal_done,vld,rdy,yaw_rt,
     if (!rst_n) begin
 	  vld_ff1 <= 1'b0;
 	  vld_ff2 <= 1'b0;
-	  rdy <= 1'b0;
+	  rdy_piped2 <= 1'b0;
 	end else begin
       vld_ff1 <= vld;
       vld_ff2 <= vld_ff1;
-	  rdy <= vld_ff2;
+	  rdy_piped2 <= vld_ff2;
 	end
 	
 	
@@ -211,6 +232,6 @@ module inertial_integrator(clk,rst_n,strt_cal,cal_done,vld,rdy,yaw_rt,
 	//////////////////////
 	// Divide by 2^15. //
 	////////////////////
-	assign heading = yaw_int[26:15];
+	assign heading_piped = yaw_int[26:15];
 
 endmodule

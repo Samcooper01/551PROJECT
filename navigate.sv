@@ -21,17 +21,36 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 	// 		filter at_hdng to be high for multipe 	   //
 	//		consecutive clock 						  //	
 	///////////////////////////////////////////////////
-	/*
-	logic 	at_hdng_dly,
-			at_hdng_re; 
+	logic 	at_hdng_1clk,
+			at_hdng_2clk, 
+			at_hdng_vld;
 	always_ff @(posedge clk, negedge rst_n)
-		if (!rst_n)  
-			at_hdng_dly <= 1'b0; 
-		else  
-			at_hdng_dly <= at_hdng;
+		if (!rst_n) begin
+			at_hdng_vld <= 1'b0; 
+			at_hdng_1clk <= 1'b0;
+			at_hdng_2clk <= 1'b0;
+		end 
+		else if (strt_hdng) begin
+			at_hdng_vld <= 1'b0;
+			at_hdng_1clk <= 1'b0;
+			at_hdng_2clk <= 1'b0;
+		end 
+		else begin 
+			at_hdng_2clk <= at_hdng_1clk;
+			at_hdng_1clk <= at_hdng; 
+			at_hdng_vld <= at_hdng & at_hdng_1clk & at_hdng_2clk;
+		end 
 
-	assign at_hdng_re = at_hdng & ~at_hdng_dly; 
-	*/
+	//////////////////////////////////////////////////////////////////
+	// TIMING SOLUTION: 										   //
+	//		slow down hdng rdy for pipeline solution within PID	  //
+	///////////////////////////////////////////////////////////////
+	logic hdng_rdy_piped;
+	always_ff @(posedge clk, negedge rst_n)
+		if (!rst_n)
+			hdng_rdy_piped <= 1'b0;
+		else
+			hdng_rdy_piped <= hdng_rdy;
 
 	logic lft_opn_rise, rght_opn_rise; // edges
 	logic nxt_opn_lft, nxt_opn_rght; // next opn signal after flop
@@ -59,9 +78,9 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 		frwrd_spd <= 11'h000;
 		else if (init_frwrd)		// assert this signal when leaving IDLE due to strt_mv
 		frwrd_spd <= MIN_FRWRD;									// min speed to get motors moving
-		else if (hdng_rdy && inc_frwrd && (frwrd_spd<MAX_FRWRD))	// max out at 2A0
+		else if (hdng_rdy_piped && inc_frwrd && (frwrd_spd<MAX_FRWRD))	// max out at 2A0
 		frwrd_spd <= frwrd_spd + {5'h00,frwrd_inc};				// always accel at 1x frwrd_inc
-		else if (hdng_rdy && (frwrd_spd>11'h000) && (dec_frwrd | dec_frwrd_fast))
+		else if (hdng_rdy_piped && (frwrd_spd>11'h000) && (dec_frwrd | dec_frwrd_fast))
 		frwrd_spd <= ((dec_frwrd_fast) && (frwrd_spd>{2'h0,frwrd_inc,3'b000})) ? frwrd_spd - {2'h0,frwrd_inc,3'b000} : // 8x accel rate
 						(dec_frwrd_fast) ? 11'h000 :	  // if non zero but smaller than dec amnt set to zero.
 						(frwrd_spd>{4'h0,frwrd_inc,1'b0}) ? frwrd_spd - {4'h0,frwrd_inc,1'b0} : // slow down at 2x accel rate
@@ -73,7 +92,7 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 			nxt_opn_lft <= curr_opn_lft;
 			curr_opn_lft <= lft_opn;
 		end
-		and rising_edge_left(lft_opn_rise, ~nxt_opn_lft, curr_opn_left);
+		and rising_edge_left(lft_opn_rise, ~nxt_opn_lft, curr_opn_lft);
 		
 		// rising edge detector nxt_rght
 		always_ff @(posedge clk) begin
@@ -113,12 +132,12 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 			// cases
 			case (state)
 				HDNG:
-					if (!at_hdng)
+					if (!at_hdng_vld) 
 						moving = 1;
 					else begin
 						mv_cmplt = 1;
 						next_state = IDLE;
-					end
+					end 
 				MV: begin
 					inc_frwrd = 1;
 					if (!frwrd_opn)

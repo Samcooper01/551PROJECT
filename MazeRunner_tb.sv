@@ -66,6 +66,7 @@ module MazeRunner_tb();
     @(negedge clk) RST_n = 0;
     @(negedge clk) RST_n = 1;
 
+    $display("TESTING CALIBRATE");
     // send calibrate command, check for pos ack
     cmd = 16'h0000;
     @(posedge clk) send_cmd = 1;
@@ -75,13 +76,13 @@ module MazeRunner_tb();
     fork
       begin: to1
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for cmd_sent in to1\n");
+        $display("ERR: timed out waiting for cmd_sent after CAL command");
         $stop();
       end: to1
       begin
         @(posedge cmd_sent);
         disable to1;
-        $display("GOOD: received cmd_sent in to1\n");
+        $display("GOOD: received cmd_sent from CAL command");
       end
     join
 
@@ -89,22 +90,25 @@ module MazeRunner_tb();
     fork
       begin: to2
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to2\n");
+        $display("ERR: timed out waiting for resp_rdy after CAL");
         $stop();
       end: to2
       begin
         @(posedge resp_rdy);
         disable to2;
-        $display("GOOD: received resp_rdy in to2");
+        $display("GOOD: received resp_rdy after CAL");
         if (resp !== 8'hA5) begin
           $display("ERR: resp did not contain 0xA5 in to2\n");
           $stop();
         end
+        $display("GOOD: resp was 0xA5\n");
       end
     join
 		
     ///////////////////////////////////////////////////////////////////////////////////////////////
     
+    $display("TESTING MANUAL SOLVE");
+    $display("Sending HEADING north command");
     // send heading command to north
     cmd = 16'h2000;
     @(posedge clk) send_cmd = 1;
@@ -114,13 +118,13 @@ module MazeRunner_tb();
     fork
       begin: to3
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to3\n");
+        $display("ERR: timed out waiting for resp_rdy after HEADING command");
         $stop();
       end: to3
       begin
         @(posedge resp_rdy);
         disable to3;
-        $display("GOOD: received resp_rdy in to3\n");
+        $display("GOOD: received resp_rdy after HEADING command");
       end
     join
 
@@ -130,9 +134,10 @@ module MazeRunner_tb();
       $stop();
     end
 	else begin
-		$display("GOOD: heading was set properly");
+		$display("GOOD: heading was properly set at time of resp_rdy\n");
 	end
 
+    $display("Sending MOVE command, stop at left opening");
     // send move command, stop at left
     cmd = 16'h4002;
     @(posedge clk) send_cmd = 1;
@@ -142,13 +147,13 @@ module MazeRunner_tb();
     fork
       begin: to4
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to4\n");
+        $display("ERR: timed out waiting for resp_rdy after MOVE command");
         $stop();
       end: to4
       begin
         @(posedge resp_rdy);
         disable to4;
-        $display("GOOD: received resp_rdy in to4\n");
+        $display("GOOD: received resp_rdy after MOVE command");
       end
     join
 
@@ -158,10 +163,11 @@ module MazeRunner_tb();
       $stop();
     end
 	else begin
-	$display("GOOD: robot is in (2,1)");
+	$display("GOOD: robot is in (2,1) after first MOVE command\n");
 	
 	end
 
+  $display("Sending HEADING command, turn left");
     // change heading to left 
     cmd = 16'h23FF;
     @(posedge clk) send_cmd = 1;
@@ -171,30 +177,26 @@ module MazeRunner_tb();
     fork
       begin: to5
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to5\n");
+        $display("ERR: timed out waiting for resp_rdy on HEADING command5");
         $stop();
       end: to5
       begin
         @(posedge resp_rdy);
         disable to5;
-        $display("GOOD: received resp_rdy in to5\n");
+        $display("GOOD: received resp_rdy after HEADING command");
       end
     join
-
-    /* NW OBSERVATION
-        I'm not postive that actl_hdng ever changed from the turn left commmand
-
-        ---See what im seeing---
-        Add desired heading and actual heading from iCNTRL 
-        dsrd heading was updated to 0x3FF but actual heading only makes it to 0x009 by the time the following if statement is evaluated
-    */ 
 
     // check if heading was updated properly
     if (!((0.70 * HEADING_MAX) < iPHYS.heading_robot[19:8] || iPHYS.heading_robot[19:8] < (0.80 * HEADING_MAX))) begin
       $display("ERR: heading was not set properly, expected 0x3FF and got %x\n", iPHYS.heading_robot[19:8]);
       $stop();
     end
+    
+    $display("GOOD: heading was 0x3FF after HEADING command\n");
 
+
+    $display("Sending MOVE command, stop at right opening");
     // send move command, stop at right
     cmd = 16'h4001;
     @(posedge clk) send_cmd = 1;
@@ -204,13 +206,13 @@ module MazeRunner_tb();
       fork
       begin: to6
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to6\n");
+        $display("ERR: timed out waiting for resp_rdy after MVOE command");
         $stop();
       end: to6
       begin
         @(posedge resp_rdy);
         disable to6;
-        $display("GOOD: received resp_rdy in to6\n");
+        $display("GOOD: received resp_rdy after MOVE command");
       end
     join
 
@@ -220,6 +222,9 @@ module MazeRunner_tb();
       $stop();
     end
 
+    $display("GOOD: robot is in (1,1) after MOVE command\n");
+
+    $display("Sending HEADING command, turn back to north");
     // send heading command to north
     cmd = 16'h2000;
     @(posedge clk) send_cmd = 1;
@@ -229,13 +234,13 @@ module MazeRunner_tb();
         fork
       begin: to7
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to7\n");
+        $display("ERR: timed out waiting for resp_rdy after HEADING command");
         $stop();
       end: to7
       begin
         @(posedge resp_rdy);
         disable to7;
-        $display("GOOD: received resp_rdy in to7\n");
+        $display("GOOD: received resp_rdy after HEADING command");
       end
     join
 
@@ -245,6 +250,9 @@ module MazeRunner_tb();
       $stop();
     end
 
+    $display("GOOD: Heading was 0x000 after HEADING command\n");
+
+    $display("Sending MOVE command, stop at right opening");
     // send move command, stop at right
     cmd = 16'h4001;
     @(posedge clk) send_cmd = 1;
@@ -254,13 +262,13 @@ module MazeRunner_tb();
         fork
       begin: to8
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to8\n");
+        $display("ERR: timed out waiting for resp_rdy after MOVE command");
         $stop();
       end: to8
       begin
         @(posedge resp_rdy);
         disable to8;
-        $display("GOOD: received resp_rdy in to8\n");
+        $display("GOOD: received resp_rdy after MOVE command");
       end
     join
 
@@ -270,6 +278,9 @@ module MazeRunner_tb();
       $stop();
     end
 
+    $display("GOOD: robot is in (1,2) after MOVE command\n");
+
+    $display("Sending HEADING command, turn east");
     // change heading to east
     cmd = 16'h2C00;
     @(posedge clk) send_cmd = 1;
@@ -279,13 +290,13 @@ module MazeRunner_tb();
         fork
       begin: to9
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to9\n");
+        $display("ERR: timed out waiting for resp_rdy after HEADING command");
         $stop();
       end: to9
       begin
         @(posedge resp_rdy);
         disable to9;
-        $display("GOOD: received resp_rdy in to9\n");
+        $display("GOOD: received resp_rdy after HEADING command");
       end
     join
 
@@ -295,6 +306,9 @@ module MazeRunner_tb();
       $stop();
     end
 
+    $display("GOOD: heading was 0xC00 after HEADING command\n");
+
+    $display("Sending MOVE command, stop at left opening");
     // send move command, stop at left
     cmd = 16'h4002;
     @(posedge clk) send_cmd = 1;
@@ -304,13 +318,13 @@ module MazeRunner_tb();
         fork
       begin: to10
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to10\n");
+        $display("ERR: timed out waiting for resp_rdy after MVOE command");
         $stop();
       end: to10
       begin
         @(posedge resp_rdy);
         disable to10;
-        $display("GOOD: received resp_rdy in to10\n");
+        $display("GOOD: received resp_rdy after MOVE command");
       end
     join
 
@@ -320,20 +334,32 @@ module MazeRunner_tb();
       $stop();
     end
 
+    $display("GOOD: robot in (3,2) after MOVE command\n");
+
+    $display("Sending HEADING command, turn north");
     // send heading command to north
     cmd = 16'h2000;
     @(posedge clk) send_cmd = 1;
     @(posedge clk) send_cmd = 0;
 
+    //////////////////////////////////////////////////
+    // NOT TESTING FOR TIMEOUT ON resp_rdy ANYMORE //
+    //    -> IT SHOULD WORK BY NOW                //
+    ///////////////////////////////////////////////
+
     // wait for resp_rdy
     @(posedge resp_rdy);
+    $display("GOOD: received resp_rdy after HEADING command");
 
     // check that the robot has a proper heading after command was sent
     if (!((0.95 * HEADING_MAX) < iPHYS.heading_robot[19:8] || iPHYS.heading_robot[19:8] < (0.05 * HEADING_MAX))) begin
       $display("ERR: heading was not set properly, expected 0x000 and got %x\n", iPHYS.heading_robot[19:8]);
       $stop();
     end
+    $display("GOOD: received heading was 0x000 after HEADING command\n");
 
+
+    $display("Sending MOVE command, stop at left opening");
     // send move command, stop at left
     cmd = 16'h4002;
     @(posedge clk) send_cmd = 1;
@@ -341,13 +367,16 @@ module MazeRunner_tb();
 
     // wait for done
     @(posedge resp_rdy);
+    $display("GOOD: received resp_rdy after MOVE command");
 
     // check that the robot is in (3,3)
     if (iPHYS.xx[14:12] !== 3 || iPHYS.yy[14:12] !== 3) begin
       $display("ERR: robot is not in (3,3) after first move\n");
       $stop();
     end
+    $display("GOOD: robot in (3,3) after MOVE command\n");
 
+    $display("Checking for solve completed through piezo");
     // check for solve completed through piezo
     fork
       begin: toend
@@ -364,10 +393,12 @@ module MazeRunner_tb();
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  $display("TESTING AUTO SOLVE");
 	// TEST 2: takes left path to magnet using solve
 	@(negedge clk) RST_n = 0;
     @(negedge clk) RST_n = 1;
     // send calibrate command, check for pos ack
+    $display("CALIBRATING after reset");
     cmd = 16'h0000;
     @(posedge clk) send_cmd = 1;
     @(posedge clk) send_cmd = 0;
@@ -376,13 +407,13 @@ module MazeRunner_tb();
     fork
       begin: totest2
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for cmd_sent in totest2\n");
+        $display("ERR: timed out waiting for cmd_sent after CAL command");
         $stop();
       end: totest2
       begin
         @(posedge cmd_sent);
         disable totest2;
-        $display("GOOD: received cmd_sent in totest2\n");
+        $display("GOOD: received cmd_sent after CAL command");
       end
     join
 
@@ -390,20 +421,23 @@ module MazeRunner_tb();
     fork
       begin: to12
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to12\n");
+        $display("ERR: timed out waiting for resp_rdy after CAL command");
         $stop();
       end: to12
       begin
         @(posedge resp_rdy);
         disable to12;
-        $display("GOOD: received resp_rdy in to12");
+        $display("GOOD: received resp_rdy after CAL command");
         if (resp !== 8'hA5) begin
-          $display("ERR: resp did not contain 0xA5 in to12\n");
+          $display("ERR: resp did not contain 0xA5 after CAL command\n");
           $stop();
         end
+        $display("GOOD: resp was 0xA5 at time of resp_rdy\n");
       end
     join
 
+
+  $display("Sending SOLVE command, left affinity");
 	cmd = 16'h6001;
     @(posedge clk) send_cmd = 1;
     @(posedge clk) send_cmd = 0;
@@ -411,26 +445,26 @@ module MazeRunner_tb();
 	fork
       begin: to11
         repeat(256000000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to11\n");
+        $display("ERR: timed out waiting for resp_rdy after solve command");
         $stop();
       end: to11
       begin
         @(posedge resp_rdy);
         disable to11;
-        $display("GOOD: received resp_rdy in to11\n");
+        $display("GOOD: received resp_rdy after solve command");
       end
     join
 	
 	// check that the robot is in (3,3)
     if (iPHYS.xx[14:12] !== 3 || iPHYS.yy[14:12] !== 3) begin
-      $display("ERR: robot is not in (3,3) after first move\n");
+      $display("ERR: robot is not in (3,3) after final move\n");
       $stop();
     end
     // wait for Piezo
     fork
       begin: toend2
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for piezo in toend2\n");
+        $display("ERR: timed out waiting for piezo in maze solve, left affinity\n");
         $stop();
       end: toend2
       begin
@@ -441,10 +475,12 @@ module MazeRunner_tb();
     join
 
 
+  
 	// TEST 3: takes lright path to magnet using solve
 	@(negedge clk) RST_n = 0;
     @(negedge clk) RST_n = 1;
     // send calibrate command, check for pos ack
+    $display("CALIBRATING after reset");
     cmd = 16'h0000;
     @(posedge clk) send_cmd = 1;
     @(posedge clk) send_cmd = 0;
@@ -453,13 +489,13 @@ module MazeRunner_tb();
     fork
       begin: totest3
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for cmd_sent in totest3\n");
+        $display("ERR: timed out waiting for cmd_sent for CAL");
         $stop();
       end: totest3
       begin
         @(posedge cmd_sent);
         disable totest3;
-        $display("GOOD: received cmd_sent in totest3\n");
+        $display("GOOD: received cmd_sent for CAL");
       end
     join
 
@@ -467,20 +503,22 @@ module MazeRunner_tb();
     fork
       begin: to13
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to13\n");
+        $display("ERR: timed out waiting for resp_rdy after CAL command");
         $stop();
       end: to13
       begin
         @(posedge resp_rdy);
         disable to13;
-        $display("GOOD: received resp_rdy in to13");
+        $display("GOOD: received resp_rdy after CAL command");
         if (resp !== 8'hA5) begin
           $display("ERR: resp did not contain 0xA5 in to13\n");
           $stop();
         end
+        $display("GOOD: resp was 0xA5 at time of resp_rdy\n");
       end
     join
 		
+   $display("Sending SOLVE command, right affinity");
 	cmd = 16'h6000;
     @(posedge clk) send_cmd = 1;
     @(posedge clk) send_cmd = 0;
@@ -488,13 +526,13 @@ module MazeRunner_tb();
 	fork
       begin: to14
         repeat(256000000) @(posedge clk);
-        $display("ERR: timed out waiting for resp_rdy in to14\n");
+        $display("ERR: timed out waiting for resp_rdy after CAL");
         $stop();
       end: to14
       begin
         @(posedge resp_rdy);
         disable to14;
-        $display("GOOD: received resp_rdy in to14\n");
+        $display("GOOD: received resp_rdy after CAL");
       end
     join
 	
@@ -507,7 +545,7 @@ module MazeRunner_tb();
     fork
       begin: toend3
         repeat(2560000) @(posedge clk);
-        $display("ERR: timed out waiting for piezo in toend3\n");
+        $display("ERR: timed out waiting for piezo in SOLVE command\n");
         $stop();
       end: toend3
       begin

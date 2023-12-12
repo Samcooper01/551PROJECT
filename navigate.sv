@@ -51,7 +51,7 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 			hdng_rdy_piped <= 1'b0;
 		else
 			hdng_rdy_piped <= hdng_rdy;
-
+		
 	logic lft_opn_rise, rght_opn_rise; // edges
 	logic nxt_opn_lft, nxt_opn_rght; // next opn signal after flop
 	logic curr_opn_lft, curr_opn_rght; // first open signal before flop
@@ -78,9 +78,9 @@ module navigate(clk,rst_n,strt_hdng,strt_mv,stp_lft,stp_rght,mv_cmplt,hdng_rdy,m
 		frwrd_spd <= 11'h000;
 		else if (init_frwrd)		// assert this signal when leaving IDLE due to strt_mv
 		frwrd_spd <= MIN_FRWRD;									// min speed to get motors moving
-		else if (hdng_rdy_piped && inc_frwrd && (frwrd_spd<MAX_FRWRD))	// max out at 2A0
+		else if (hdng_rdy && inc_frwrd && (frwrd_spd<MAX_FRWRD))	// max out at 2A0
 		frwrd_spd <= frwrd_spd + {5'h00,frwrd_inc};				// always accel at 1x frwrd_inc
-		else if (hdng_rdy_piped && (frwrd_spd>11'h000) && (dec_frwrd | dec_frwrd_fast))
+		else if (hdng_rdy && (frwrd_spd>11'h000) && (dec_frwrd | dec_frwrd_fast))
 		frwrd_spd <= ((dec_frwrd_fast) && (frwrd_spd>{2'h0,frwrd_inc,3'b000})) ? frwrd_spd - {2'h0,frwrd_inc,3'b000} : // 8x accel rate
 						(dec_frwrd_fast) ? 11'h000 :	  // if non zero but smaller than dec amnt set to zero.
 						(frwrd_spd>{4'h0,frwrd_inc,1'b0}) ? frwrd_spd - {4'h0,frwrd_inc,1'b0} : // slow down at 2x accel rate

@@ -1,0 +1,275 @@
+Coverage Report Summary Data by file
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/A2D_intf.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        15        15         0   100.00%
+    Statements                      22        22         0   100.00%
+    Toggles                        140       112        28    80.00%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/ADC128S_FC.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        27        25         2    92.59%
+    Conditions                       8         3         5    37.50%
+    Expressions                      2         2         0   100.00%
+    Statements                      22        21         1    95.45%
+    Toggles                        214       170        44    79.43%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/DutyScaleROM.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        65         6        59     9.23%
+    Statements                      66         7        59    10.60%
+    Toggles                         64        44        20    68.75%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/IR_Math_unpiped.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         8         8         0   100.00%
+    Statements                      11        11         0   100.00%
+    Toggles                        448       394        54    87.94%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/MazeRunner.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        10        10         0   100.00%
+    Expressions                     12        12         0   100.00%
+    Statements                       5         5         0   100.00%
+    Toggles                        434       396        38    91.24%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/MazeRunner_tb.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        30        15        15    50.00%
+    Conditions                      27         0        27     0.00%
+    Statements                     312       244        68    78.20%
+    Toggles                        124        96        28    77.41%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/MtrDrv_unpiped.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         8         4         4    50.00%
+    Conditions                       8         0         8     0.00%
+    Statements                       8         8         0   100.00%
+    Toggles                        398       376        22    94.47%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/PID_unpiped.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        27        27         0   100.00%
+    Conditions                       8         8         0   100.00%
+    Expressions                      5         5         0   100.00%
+    Statements                      30        30         0   100.00%
+    Toggles                        684       672        12    98.24%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/PWM12.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        10        10         0   100.00%
+    Conditions                       3         3         0   100.00%
+    Statements                      11        11         0   100.00%
+    Toggles                         56        56         0   100.00%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/PWM8.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         6         6         0   100.00%
+    Expressions                      1         1         0   100.00%
+    Statements                       8         8         0   100.00%
+    Toggles                         42        26        16    61.90%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/RemoteComm.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        20        20         0   100.00%
+    Statements                      24        24         0   100.00%
+    Toggles                        108       104         4    96.29%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/RunnerPhysics.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                       112       104         8    92.85%
+    Conditions                      34        25         9    73.52%
+    Expressions                      4         2         2    50.00%
+    Statements                     138       130         8    94.20%
+    Toggles                        736       662        74    89.94%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/SPI_ADC128S.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        27        27         0   100.00%
+    Expressions                      5         5         0   100.00%
+    Statements                      39        39         0   100.00%
+    Toggles                        166       153        13    92.16%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/SPI_iNEMO4.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        53        39        14    73.58%
+    Conditions                       2         2         0   100.00%
+    Expressions                      3         1         2    33.33%
+    Statements                      84        60        24    71.42%
+    Toggles                        176       154        22    87.50%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/SPI_mnrch.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        34        34         0   100.00%
+    Expressions                      1         1         0   100.00%
+    Statements                      40        40         0   100.00%
+    Toggles                        156       142        14    91.02%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/UART.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         48        48         0   100.00%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/UART_rx.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        24        24         0   100.00%
+    Conditions                       5         5         0   100.00%
+    Expressions                      1         1         0   100.00%
+    Statements                      36        36         0   100.00%
+    Toggles                         92        92         0   100.00%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/UART_tx.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        22        22         0   100.00%
+    Conditions                       3         3         0   100.00%
+    Expressions                      1         1         0   100.00%
+    Statements                      29        29         0   100.00%
+    Toggles                         88        88         0   100.00%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/UART_wrapper.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        15        15         0   100.00%
+    Conditions                       2         2         0   100.00%
+    Statements                      21        21         0   100.00%
+    Toggles                         92        72        20    78.26%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/cmd_proc.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        30        29         1    96.66%
+    Conditions                       4         3         1    75.00%
+    Statements                      41        41         0   100.00%
+    Toggles                         98        94         4    95.91%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/inert_intf.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        32        32         0   100.00%
+    Statements                      46        46         0   100.00%
+    Toggles                        254       242        12    95.27%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/inertial_integrator_unpiped.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        30        29         1    96.66%
+    Conditions                       3         3         0   100.00%
+    Expressions                      1         1         0   100.00%
+    Statements                      49        46         3    93.87%
+    Toggles                        390       306        84    78.46%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/maze_solve.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        40        31         9    77.50%
+    Conditions                       8         4         4    50.00%
+    Statements                      44        39         5    88.63%
+    Toggles                         84        84         0   100.00%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/navigate_unpiped.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        31        31         0   100.00%
+    Conditions                      16        14         2    87.50%
+    Expressions                      1         1         0   100.00%
+    Statements                      44        44         0   100.00%
+    Toggles                         96        70        26    72.91%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/piezo_drv.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        44        28        16    63.63%
+    Conditions                      11         5         6    45.45%
+    Statements                      57        35        22    61.40%
+    Toggles                        196       122        74    62.24%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/reset_synch.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+    Statements                       5         5         0   100.00%
+    Toggles                          8         8         0   100.00%
+
+=================================================================================
+=== File: /filespace/k/kckowalski2/ece551/Project/551PROJECT/sensor_intf.sv
+=================================================================================
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        83        83         0   100.00%
+    Conditions                      11        11         0   100.00%
+    Expressions                     10        10         0   100.00%
+    Statements                     119       119         0   100.00%
+    Toggles                        782       604       178    77.23%
+
+
+Total Coverage By File (code coverage only, filtered view): 81.54%
+

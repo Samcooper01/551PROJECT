@@ -1,15 +1,33 @@
-# 551PROJECT
-551 final project
+# MazeRunner
 
-HOW TO SETUP GITIGNORE
+## Project Overview
+MazeRunner is a project that involves designing, simulating, and debugging a maze-solving robot using various sensors and actuators. The goal is to navigate through a maze using the MazeRunner module and implement it on an FPGA.
 
-1. GO TO I DRIVE FOLDER AND OPEN POWERSHELL
-2. MAKE A NEW FILE CALLED .gitignore_global
-3. GO TO YOUR REPO YOUR USING
-4. OPEN IT IN POWERSHELL
-5. type git config --global core.excludesfile ~/.gitignore_global
-6. NOW GO TO .gitignore_global and add the text (*.mr *.pvl *.syn) with the whitespaces as new lines.
-7. DONE
+## Design Description
+- **Example Design**: Maze-solving robot.
+- **Components**:
+  - IR Sensors
+  - Hall Sensor
+  - Gyro Sensor
+  - Motors
+  - Various digital blocks (UART wrapper, PID controller, etc.)
 
+## Part 1: Custom Logic Design
+### Part 1a: Design and Simulation
+- Design custom logic in Verilog/SystemVerilog.
+- Write code for various sensors and actuators.
+- Simulate the design using the provided testbench and verify behavior.
 
-# DONT GIT PUSH FILES THAT END IN ANYHING OTHER THAN .SV OR .dc PLEASE
+### Part 1b: Timing Constraints
+- Modify the clock frequency and ensure the design meets the timing requirements.
+- Synthesize the design and check the timing constraints using the Timing Analyzer.
+
+## Part 2: On-Board Testing
+### Part 2a: Integration and Testing
+- Integrate the custom logic with the provided modules.
+- Test the design on the DE0 FPGA board using the provided testbench and test suite.
+- Use LEDs and 7-segment displays to track and display the states and outputs.
+
+### Part 2b: Code Coverage and Verification
+- Run code coverage on the test suite and use the results to improve the test suite.
+- Ensure the correct implementation of the MazeRunner module using SignalTap and other verification tools.

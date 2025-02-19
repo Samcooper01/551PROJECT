@@ -1,5 +1,7 @@
 # MazeRunner
 
+Check out the project demo [here](https://drive.google.com/file/d/13gR39I4FwrdP1VyeVpJc-fJw4XRrLq_s/view?usp=sharing)
+
 ## Project Overview
 MazeRunner is a project that involves designing, simulating, and debugging a maze-solving robot using various sensors and actuators. The goal is to navigate through a maze using the MazeRunner module and implement it on an FPGA.
 
